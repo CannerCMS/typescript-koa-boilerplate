@@ -1,0 +1,96 @@
+{
+  "name": "@canner/koa-typescript-boilerplate",
+  "version": "0.0.0",
+  "description": "@canner/koa-typescript-boilerplate",
+  "license": "MIT",
+  "repository": "",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "keywords": [
+    ""
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "start": "ts-node src/bin/www.ts",
+    "start:prod": "node lib/bin/www",
+    "clean": "rimraf lib",
+    "lint": "tslint --force --format verbose \"src/**/*.ts\" \"test/*\"",
+    "build": "npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc -p ./tsconfig.build.json --pretty",
+    "build:prod": "npm run clean && echo Using TypeScript && tsc --version && tsc -p ./tsconfig.build.json --pretty",
+    "test": "mocha --compilers ts:ts-node/register --recursive \"test/**/*.spec.ts\"",
+    "coverage": "nyc npm run test",
+    "watch": "npm run build -- --watch",
+    "watch:test": "npm run test -- --watch",
+    "tf:init:prod": "terraform init -backend-config=terraform/config/production.conf -var-file=terraform/config/production.tfvars",
+    "tf:plan:prod": "terraform plan -var-file=terraform/config/production.tfvars",
+    "tf:apply:prod": "terraform apply -var-file=terraform/config/production.tfvars"
+  },
+  "dependencies": {
+    "@koa/cors": "^2.2.1",
+    "axios": "^0.17.1",
+    "bluebird": "^3.5.1",
+    "boom": "^7.1.1",
+    "debug": "^3.1.0",
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-morgan": "^1.0.1",
+    "koa-router": "^7.3.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.4",
+    "mongoose": "^4.13.7",
+    "node-uuid": "^1.4.8",
+    "validator": "^9.2.0"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.18",
+    "@types/boom": "^4.3.8",
+    "@types/chai": "^3.0.0",
+    "@types/debug": "^0.0.30",
+    "@types/koa": "^2.0.42",
+    "@types/koa-bodyparser": "^3.0.26",
+    "@types/koa-morgan": "^1.0.4",
+    "@types/koa-router": "^7.0.27",
+    "@types/koa__cors": "^2.2.2",
+    "@types/lodash": "^4.14.88",
+    "@types/mocha": "^2.0.0",
+    "@types/mongoose": "^4.7.29",
+    "@types/node": "^8.0.0",
+    "@types/node-uuid": "^0.0.28",
+    "@types/validator": "^6.3.0",
+    "chai": "^3.0.0",
+    "coveralls": "^2.0.0",
+    "mocha": "^3.0.0",
+    "nyc": "^10.0.0",
+    "rimraf": "^2.0.0",
+    "ts-node": "^4.0.2",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.d.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "text",
+      "html",
+      "lcov"
+    ],
+    "all": true
+  }
+}

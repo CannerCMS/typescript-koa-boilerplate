@@ -1,0 +1,12 @@
+coverage
+.vscode
+node_modules
+npm-debug.log
+.nyc_output
+lib
+.editorconfig
+.gitignore
+.travis.yml
+LICENCE
+README.md
+tslint.json
