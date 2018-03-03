@@ -1,5 +1,7 @@
 ## typescript-koa-boilerplate
 ### start server
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Canner/typescript-koa-boilerplate.svg)](https://greenkeeper.io/)
 ```
 $ yarn
 $ npm start
